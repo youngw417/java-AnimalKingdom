@@ -68,7 +68,34 @@ public class Main{
         animalList.sort((b, a) -> a.getYearNamed() - b.getYearNamed());
         System.out.println("\n\n\n");
         animalList.forEach( a -> System.out.println(a));
-        // System.out.println(animalList);
+
+        animalList.sort((a, b) -> a.getName().compareToIgnoreCase(b.getName()));
+        System.out.println("\n\n\n");
+        animalList.forEach(a -> System.out.println(a));
+        animalList.sort((a, b) -> a.move().compareToIgnoreCase(b.move()));
+        animalList.forEach(a -> System.out.println(a + "  move: " + a.move()));
+
+        filterFunc(animalList, (a) -> a.breath() == "lungs");
+        System.out.println("\n\n\n");
+        filteredList.forEach(a -> System.out.println(a + "   breath: " + a.breath()));
+
+        filterFunc(animalList, (a) -> a.breath() == "lungs" && a.getYearNamed() == 1758);
+         System.out.println("\n\n\n");
+        filteredList.forEach(a -> System.out.println(a + "   breath: " + a.breath() + "   year named: " + a.getYearNamed()));
+
+        filterFunc(animalList, (a) -> a.breath() == "lungs" && a.reproduce() == "eggs");
+         System.out.println("\n\n\n");
+        filteredList.forEach(a -> System.out.println(a + "   breath: " + a.breath() + "   reproduce: " + a.reproduce()));
+
+        filterFunc(animalList, a -> a.getYearNamed() == 1758);
+        filteredList.sort( (a, b) -> a.getName().compareToIgnoreCase(b.getName()));
+        System.out.println("\n\n\n");
+        filteredList.forEach( a -> System.out.println(a));
+
+        filterFunc(animalList, a -> a instanceof Mammals);
+        filteredList.sort( (a, b) -> a.getName().compareToIgnoreCase(b.getName()));
+        System.out.println("\n\n\n");
+        filteredList.forEach( a -> System.out.println(a));
     }
 }
 
